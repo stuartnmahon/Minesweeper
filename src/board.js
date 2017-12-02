@@ -1,25 +1,4 @@
-class Game {
-    constructor(numberOfRows, numberOfColumns, numberOfBombs){
-        this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-    }
-
-    playMove(rowIndex, columnIndex) {
-        this._board.flipTile(rowIndex, columnIndex);
-
-        if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-            console.log('The game is over! Here was the final board: ');
-            this._board.print();
-        } else if(this._board.hasNonBombEmptySpaces()){
-            console.log('Current board: ');
-            this._board.print();
-        } else {
-            console.log('Winner, Winner! Here is your winning board: ');
-            this._board.print();
-        }
-    }
-}
-
-class Board {
+export class Board {
     constructor(numberOfRows, numberOfColumns, numberOfBombs){
         this._numberOfBombs = numberOfBombs;
         this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -117,6 +96,3 @@ class Board {
         console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));
     }
 }
-
-const g = new Game(3,3,3);
-g.playMove(0,0);
